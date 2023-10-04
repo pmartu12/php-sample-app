@@ -1,0 +1,6 @@
+includes:
+    - /root/.composer/vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - /root/.composer/vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
+parameters:
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false #check https://github.com/phpstan/phpstan-doctrine/issues/94 for this

@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  php-fpm:
+    environment:
+      - APP_ENV=preprod
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+#    entrypoint: ./docker-entrypoint.sh
+    ports:
+      - "9000"
+    volumes:
+      - .:/app
+#      - ./bin:/app/bin:consistent
+#      - ./config:/app/config:consistent
+#      - ./public:/app/public:consistent
+#      - ./src:/app/src:consistent
+#      - ./var:/app/var:consistent
+  nginx:
+    depends_on:
+      - php-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+     - "8091:8080"
+
+
